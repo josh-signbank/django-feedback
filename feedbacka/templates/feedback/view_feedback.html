@@ -1,0 +1,25 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}View Feedback{% endblock %}
+
+{% block body_content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+        <tr>
+            <td>{{feedback.your_subjec}}t</td>
+            <td>{{feedback.your_name}}</td>
+            <td>{{feedback.your_email}}</td>
+            <td>{{feedback.date}}</td>    
+        <tr>
+</table>
+<blockquote>
+  <p>{{ feedback.your_feedback }}</p>
+</blockquote>
+{% endblock %}

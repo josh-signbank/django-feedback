@@ -1,0 +1,42 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}View Feedback List{% endblock %}
+
+{% block body_content %}
+{% if feedback %}
+<h2 class= "text-center">Feedback List </h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Name</th>
+        <th>Date</th>
+         <th></th>
+      </tr>
+    </thead>
+    {% for entry in feedback %}
+        <tr class={% if entry.has_been_read %}"" { % else % } "" {% endif %} "info" >
+            <td> 
+                <a href="{% url 'feedback:view_feedback' entry.id %}">{{ entry.your_subject }}</a></td>
+            <td> {{ entry.your_name}} </td>
+            <td> {{ entry.date}} </td>  
+            <td>   <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Action
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="{% url 'feedback:view_feedback' entry.id %}">View</a></li>
+    <li><a href="#">Move to trash</a></li>
+    <li><a href="#">Mark as read</a></li>
+  </ul>
+</div>              </td>
+        </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No feedback.</p>
+{% endif %}
+
+{% endblock %}
+

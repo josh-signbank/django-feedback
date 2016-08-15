@@ -1,0 +1,28 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}Submit Feedback{% endblock %}
+
+{% block body_content %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    </div>
+    {% endfor %}
+{% endif %}
+<h2 class= "text-center">  Submit Feedback </h2>
+<form action="{% url 'feedback:submit_feedback'%}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="fieldWrapper form-group">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}
