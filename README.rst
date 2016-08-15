@@ -4,10 +4,6 @@ Feedback
 
 Feedback is a simple django app for managing feedback submission and viewing. 
 
-<<<<<<< HEAD:README
-=======
-
->>>>>>> 88324777e7d9a49277ba36be1c98f7242131f1eb:README.rst
 Quick start
 -----------
 
